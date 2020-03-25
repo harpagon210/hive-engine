@@ -2,10 +2,10 @@
 	<div class="row">
 		<div class="col-md-12 text-center stats">
 			<h3 class="font-weight-bold mb-3">Market Depth (<%= data.token %>) <i class="fas fa-info-circle" style="cursor:pointer" onclick="SE.ShowDialog('token_info', SE.GetToken(data.token));"></i></h3>
-			<small class="m-1 label">Last: <span class="font-weight-bold text-dark"><%= data.trade_history && data.trade_history.length > 0 ? parseFloat(data.trade_history[0].price) + ' STEEM / ' + usdFormat(data.trade_history[0].price) : '--' %></span></small>
-			<small class="m-1 label">24h Vol: <span class="font-weight-bold text-dark"><%= addCommas(parseFloat(SE.Tokens.find(t => t.symbol == data.token).volume).toFixed()) + ' STEEM / ' + usdFormat(SE.Tokens.find(t => t.symbol == data.token).volume, 2) %></span></small>
-			<small class="m-1 label">Bid: <a id="highest-bid" class="font-weight-bold text-dark"><%= data.buy_orders && data.buy_orders.length > 0 ? parseFloat(data.buy_orders[0].price) + ' STEEM' : '--' %></a></small>
-			<small class="m-1 label">Ask: <a id="lowest-ask" class="font-weight-bold text-dark"><%= data.sell_orders && data.sell_orders.length > 0 ? parseFloat(data.sell_orders[0].price) + ' STEEM' : '--' %></a></small>
+			<small class="m-1 label">Last: <span class="font-weight-bold text-dark"><%= data.trade_history && data.trade_history.length > 0 ? parseFloat(data.trade_history[0].price) + ' SWAP.HIVE / ' + usdFormat(data.trade_history[0].price) : '--' %></span></small>
+			<small class="m-1 label">24h Vol: <span class="font-weight-bold text-dark"><%= addCommas(parseFloat(SE.Tokens.find(t => t.symbol == data.token).volume).toFixed()) + ' SWAP.HIVE / ' + usdFormat(SE.Tokens.find(t => t.symbol == data.token).volume, 2) %></span></small>
+			<small class="m-1 label">Bid: <a id="highest-bid" class="font-weight-bold text-dark"><%= data.buy_orders && data.buy_orders.length > 0 ? parseFloat(data.buy_orders[0].price) + ' SWAP.HIVE' : '--' %></a></small>
+			<small class="m-1 label">Ask: <a id="lowest-ask" class="font-weight-bold text-dark"><%= data.sell_orders && data.sell_orders.length > 0 ? parseFloat(data.sell_orders[0].price) + ' SWAP.HIVE' : '--' %></a></small>
 		</div>
 	</div>
 	<div class="row mt-4">
@@ -26,7 +26,7 @@
 						<label style="min-width: 90px;">Price</label>
 						<input type="number" id="buyPrice" placeholder="0.0" class="text-right" style="width: 180px;">
 						<div class="input-group-append">
-							<span class="input-group-text">Steem/<%= data.token %></span>
+							<span class="input-group-text">SWAP.HIVE/<%= data.token %></span>
 						</div>
 						<div class="invalid-feedback">
 							Required field. Price must be a number greater than 0.
@@ -50,7 +50,7 @@
 						<label style="min-width: 90px;">Total</label>
 						<input type="number" id="buyTotal" placeholder="0.0" class="text-right" style="width: 180px;" readonly disabled>
 						<div class="input-group-append">
-							<span class="input-group-text">Steem</span>
+							<span class="input-group-text">SWAP.HIVE</span>
 						</div>
 						<div class="invalid-feedback">
 							Your balance is too low to confirm this order.
@@ -60,7 +60,7 @@
 				<div class="group mt-2 pl-1 pr-2">
 					<span class="small float-left">
 						<small class="text-info">Your Balance:
-							<a id="user-steemp-balance" class="font-weight-bold text-dark"><%= data.user_steemp_balance ? addCommas(parseFloat(data.user_steemp_balance.balance)) + ' STEEMP' : '-' %></a>
+							<a id="user-steemp-balance" class="font-weight-bold text-dark"><%= data.user_steemp_balance ? addCommas(parseFloat(data.user_steemp_balance.balance)) + ' SWAP.SWAP.HIVE' : '-' %></a>
 						</small>
 						<br>
 						<small class="text-info">Lowest Ask:
@@ -81,7 +81,7 @@
 						<label style="min-width: 90px;">Price</label>
 						<input type="number" id="sellPrice" placeholder="0.0" class="text-right" style="width: 180px;">
 						<div class="input-group-append">
-							<span class="input-group-text">Steem/<%= data.token %></span>
+							<span class="input-group-text">SWAP.HIVE/<%= data.token %></span>
 						</div>
 						<div class="invalid-feedback">
 							Required field. Price must be a number greater than 0.
@@ -105,7 +105,7 @@
 						<label style="min-width: 90px;">Total</label>
 						<input type="number" id="sellTotal" placeholder="0.0" class="text-right" style="width: 180px;" readonly disabled>
 						<div class="input-group-append">
-							<span class="input-group-text">Steem</span>
+							<span class="input-group-text">SWAP.HIVE</span>
 						</div>
 						<div class="invalid-feedback">
 							Your balance is too low to confirm this order.
@@ -193,8 +193,8 @@
 
 	$('#buy_order_table').footable({
 		"columns": [
-			{ "name": "total", "title": "Total STEEM", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
-			{ "name": "amountLocked", "title": "STEEM", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
+			{ "name": "total", "title": "Total SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
+			{ "name": "amountLocked", "title": "SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
 			{ "name": "quantity", "title": data.token + " (Qty)", "type": "number", "classes": "text-right", "formatter": OrderAmountColumn },
 			{ "name": "price", "title": "Price", "type": "number", "classes": "text-right", "formatter": OrderPriceColumn }
 		],
@@ -215,8 +215,8 @@
 		"columns": [
 			{ "name": "price", "title": "Price", "type": "number", "classes": "text-right", "formatter": OrderPriceColumn },
 			{ "name": "quantity", "title": data.token + " (Qty)", "type": "number", "classes": "text-right", "formatter": OrderAmountColumn },
-			{ "name": "amountLocked", "title": "STEEM", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
-			{ "name": "total", "title": "Total STEEM", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn }
+			{ "name": "amountLocked", "title": "SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
+			{ "name": "total", "title": "Total SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn }
 		],
 		"rows": data.sell_orders.slice(0, 15)
 	});
@@ -237,7 +237,7 @@
 			{ "name": "type", "title": "Type", "formatter": OrderTypeColumn },
 			{ "name": "price", "title": "Price", "type": "number", "classes": "text-right", "formatter": OrderPriceColumn },
 			{ "name": "quantity", "title": data.token + " (Qty)", "classes": "text-right" },
-			{ "name": "total", "title": "Steem", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
+			{ "name": "total", "title": "SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
 			{ "name": "action", "title": "Action", "classes": "text-center", "formatter": function (value, options, rowdata) {
 					var actions = $('<div/>')
 
@@ -271,7 +271,7 @@
 			{ "name": "type", "title": "Type", "formatter": OrderTypeColumn },
 			{ "name": "price", "title": "Price", "type": "number", "classes": "text-right", "formatter": OrderPriceColumn },
 			{ "name": "quantity", "title": "Quantity", "type": "number", "classes": "text-right", "formatter": OrderAmountColumn },
-			{ "name": "total", "title": "Total STEEM", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
+			{ "name": "total", "title": "Total SWAP.HIVE", "type": "number", "classes": "text-right", "formatter": SteemAmountColumn },
 		],
 		"rows": data.trade_history
 	});

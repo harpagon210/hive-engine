@@ -53,7 +53,7 @@ function popupCenter(url, title, w, h) {
 	return newWindow;
 }
 
-function useKeychain() { return window.steem_keychain && !localStorage.getItem('key'); }
+function useKeychain() { return window.hive_keychain && !localStorage.getItem('key'); }
 
 function addCommas(nStr, currency) {
 	nStr += '';

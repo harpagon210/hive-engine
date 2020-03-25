@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<p>Trade any Steem Engine token against STEEM on the internal DEX!</p>	
+	<p>Trade any Hive Engine token against HIVE on the internal DEX!</p>	
 </header>
 
 <div class="market container">
@@ -31,7 +31,7 @@
 </div>
 
 <script>
-	var token_data = SE.Tokens.filter(t => t.symbol != 'STEEMP');
+	var token_data = SE.Tokens.filter(t => t.symbol != 'SWAP.HIVE');
 	token_data = token_data.filter(t => t.metadata && !t.metadata.hide_in_market);
 
 	SE.ShowMarketView('<%= data.selected %>');
@@ -49,7 +49,7 @@
 					SE.ShowMarketView(token_data[index].symbol);
 
 					var url = '?p=' + SE.CurrentView.view + '&' + $.param({ t: token_data[index].symbol });
-					window.history.pushState({ data: SE.CurrentView.data, view: SE.CurrentView.view, params: { t: token_data[index].symbol } }, 'Steem Engine - Smart Contracts on the STEEM blockchain', url);
+					window.history.pushState({ data: SE.CurrentView.data, view: SE.CurrentView.view, params: { t: token_data[index].symbol } }, 'Steem Engine - Smart Contracts on the HIVE blockchain', url);
 				});
 			}
 		},

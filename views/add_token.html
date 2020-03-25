@@ -1,12 +1,12 @@
 <header>
   <h1>CREATE A TOKEN</h1>
-  <p>Are you ready to make history? Let’s make a new token on the Steem blockchain!</p>
+  <p>Are you ready to make history? Let’s make a new token on the Hive blockchain!</p>
 </header>
 
 <div class="register container text-left">
   <p>
 		<span class="font-weight-bold">NOTE: Token Creation costs <%= addCommas(SE.Params.tokenCreationFee) + ' ' + Config.NATIVE_TOKEN %> (Steem Engine Native Tokens)</span></br>
-		Your Current ENG Balance: <%= addCommas(SE.GetBalance(Config.NATIVE_TOKEN)) + ' ' + Config.NATIVE_TOKEN %> (<a href="javascript:void(0);" onclick="SE.ShowBuySSC();" style="color: #8E4A2C; font-weight: bold;">BUY ENG with STEEM</a>)
+		Your Current BEE Balance: <%= addCommas(SE.GetBalance(Config.NATIVE_TOKEN)) + ' ' + Config.NATIVE_TOKEN %> (<a href="javascript:void(0);" onclick="SE.ShowBuySSC();" style="color: #8E4A2C; font-weight: bold;">BUY BEE with HIVE</a>)
   </p>  
 </div>
 
